@@ -33,13 +33,28 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        var element = document.getElementById('deviceProperties');
+		var element = document.getElementById('deviceProperties');
         element.innerHTML = 'Device Name: '     + device.name     + '<br />' +
                             'Device Cordova: '  + device.cordova  + '<br />' +
                             'Device Platform: ' + device.platform + '<br />' +
                             'Device UUID: '     + device.uuid     + '<br />' +
                             'Device Version: '  + device.version  + '<br />';
-                            
+
+		var networkState = navigator.connection.type;
+
+		var states = {};
+    	states[Connection.UNKNOWN]  = 'Unknown connection';
+		states[Connection.ETHERNET] = 'Ethernet connection';
+    	states[Connection.WIFI]     = 'WiFi connection';
+    	states[Connection.CELL_2G]  = 'Cell 2G connection';
+		states[Connection.CELL_3G]  = 'Cell 3G connection';
+		states[Connection.CELL_4G]  = 'Cell 4G connection';
+    	states[Connection.CELL]     = 'Cell generic connection';
+    	states[Connection.NONE]     = 'No network connection';
+
+    	var element = document.getElementById('networkinfo');
+		element.innerHTML = 'Connection type: ' + states[networkState]'<br />';
+                                        
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
