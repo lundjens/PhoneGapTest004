@@ -52,28 +52,6 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    },
-    checkLanguage: function() {
-        navigator.globalization.getPreferredLanguage(
-        function (language) {alert('language: ' + language.value + '\n');},
-        function () {alert('Error getting language\n');}
-      );
-    },
-    checkDateString: function() {
-      navigator.globalization.dateToString(
-        new Date(),
-        function (date) {alert('date: ' + date.value + '\n');},
-        function () {alert('Error getting dateString\n');,
-        {formatLength:'short', selector:'date and time'}}
-      );
-    },
-    checkLocale: function() {
-        navigator.globalization.getLocaleName(
-        function (locale) {alert('locale: ' + locale.value + '\n');},
-        function () {alert('Error getting locale\n');}
-      );
     }
-
-
 
 };
